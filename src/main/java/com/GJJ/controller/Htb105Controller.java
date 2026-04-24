@@ -33,4 +33,11 @@ public class Htb105Controller {
         service.delete(acct);
         return "删除成功";
     }
+
+    //自定义SQL调用，只查John得信息
+    @GetMapping("/selectJohn")
+    public Htb105VO selectJohn(@RequestParam String name) {
+        return service.selectJohn(name);
+    }
+
 }

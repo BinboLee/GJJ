@@ -38,6 +38,20 @@ public class Htb105Service {
         return vo;
     }
 
+
+    public Htb105VO selectJohn(String name) {
+        Optional<Htb105> opt = repository.findByJohn(name);
+
+        // Java 8 只能用 isPresent，不能用 isEmpty
+        if (!opt.isPresent()) {
+            return null;
+        }
+
+        Htb105VO vo = new Htb105VO();
+        BeanUtils.copyProperties(opt.get(), vo);
+        return vo;
+    }
+
     // 删除
     public void delete(String acct) {
         repository.deleteById(acct);
