@@ -36,7 +36,7 @@ public class Htb105Controller {
 
     //自定义SQL调用，只查John得信息
     @GetMapping("/selectJohn")
-    public Htb105VO selectJohn(@RequestParam String name) {
+    public Object selectJohn(@RequestParam String name) {
         return service.selectJohn(name);
     }
 

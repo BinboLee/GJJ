@@ -39,12 +39,13 @@ public class Htb105Service {
     }
 
 
-    public Htb105VO selectJohn(String name) {
+    public Object selectJohn(String name) {
         Optional<Htb105> opt = repository.findByJohn(name);
 
         // Java 8 只能用 isPresent，不能用 isEmpty
         if (!opt.isPresent()) {
-            return null;
+            // 查不到 → 直接返回提示文字
+            return "无此人";
         }
 
         Htb105VO vo = new Htb105VO();
